@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8" />
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <title>テーブル作成</title>
+    </head>
+    <body>
+        <button onClick="chen(0)">立方</button>
+        <button onClick="chen(1)">面心</button>
+        <button onClick="chen(2)">体心</button>
+        <table>
+            <tr>
+                <th>\(h^2+k^2+l^2\)</th>
+                <th>h</th>
+                <th>k</th>
+                <th>l</th>
+                <th>多重度</th>
+                <th>面心</th>
+                <th>体心</th>
+            </tr>
+            <tbody id="tbl">
+                <!-- 行はここに追加されます -->
+            </tbody>
+        </table>
+    </body>
+</html>
+<script>
+    let ans = Array(101).fill(null); // ここでans配列をnullで初期化
+    let mode = 0;
+    function chen(num) {
+        console.log(num);
+        hyouzi(num);
+    }
+    function getoverlap(x, y, z) {
+        let p = 6;
+        if (x > 0) p *= 2;
+        if (y > 0) p *= 2;
+        if (z > 0) p *= 2;
+        if (x == y && y == z) {
+            p = p / 6;
+        } else if (x == y || x == z || y == z) {
+            p = p / 2;
+        }
+        return p;
+    }
+
+    function isMensin(x, y, z) {
+        if (x % 2 === y % 2 && y % 2 === z % 2) {
+            return "O"; // O は文字列に変更
+        }
+        return "x";
+    }
+
+    function isTaisin(x, y, z) {
+        if ((x + y + z) % 2 === 0) {
+            return "O"; 
+        }
+        return "x";
+    }
+    for (let i = 0; i <= 100; i++) {
+        ans[i] = [];
+    }
+    for (let h = 0; h <= 10; h++) {
+        for (let k = 0; k <= h; k++) {
+            for (let l = 0; l <= k; l++) {
+                let a = Math.pow(h, 2) + Math.pow(k, 2) + Math.pow(l, 2);
+                if (a <= 100) {
+                    ans[a].push([h, k, l]);
+                }
+            }
+        }
+    }
+    hyouzi(0);
+    function hyouzi(mode) {
+        console.log("hyouzikannsuu");
+        const tt = document.getElementById("tbl");
+        tt.innerHTML = "";
+        for (let i = 0; i <= 100; i++) {
+            for (let j = 0; j < ans[i].length; j++) {
+                if (mode == 2 && isTaisin(ans[i][j][0], ans[i][j][1], ans[i][j][2] )== "O") {
+                    tt.innerHTML += `<tr>
+                    <td>${i}</td>
+                    <td>${ans[i][j][0]}</td>
+                    <td>${ans[i][j][1]}</td>
+                    <td>${ans[i][j][2]}</td>
+                    <td>${getoverlap(ans[i][j][0], ans[i][j][1], ans[i][j][2])}</td>
+                    <td>${isMensin(ans[i][j][0], ans[i][j][1], ans[i][j][2])}</td>
+                    <td>${isTaisin(ans[i][j][0], ans[i][j][1], ans[i][j][2])}</td>
+                </tr>`;
+                };
+                if (mode == 1 && isMensin(ans[i][j][0], ans[i][j][1], ans[i][j][2]) == "O") {
+                    tt.innerHTML += `<tr>
+                    <td>${i}</td>
+                    <td>${ans[i][j][0]}</td>
+                    <td>${ans[i][j][1]}</td>
+                    <td>${ans[i][j][2]}</td>
+                    <td>${getoverlap(ans[i][j][0], ans[i][j][1], ans[i][j][2])}</td>
+                    <td>${isMensin(ans[i][j][0], ans[i][j][1], ans[i][j][2])}</td>
+                    <td>${isTaisin(ans[i][j][0], ans[i][j][1], ans[i][j][2])}</td>
+                </tr>`;
+                };
+                if (mode == 0) {
+                    tt.innerHTML += `<tr>
+                    <td>${i}</td>
+                    <td>${ans[i][j][0]}</td>
+                    <td>${ans[i][j][1]}</td>
+                    <td>${ans[i][j][2]}</td>
+                    <td>${getoverlap(ans[i][j][0], ans[i][j][1], ans[i][j][2])}</td>
+                    <td>${isMensin(ans[i][j][0], ans[i][j][1], ans[i][j][2])}</td>
+                    <td>${isTaisin(ans[i][j][0], ans[i][j][1], ans[i][j][2])}</td>
+                </tr>`;
+                }
+            }
+        }
+    }
+</script>
+<style>
+    table {
+        border-top: 3px black double;
+        border-bottom: 3px black double;
+        border-collapse: collapse;
+    }
+    th,
+    td {
+        text-align: center;
+        width: 70px;
+    }
+    table th {
+        border-bottom: 1px black solid;
+    }
+    #tbl tr:nth-child(odd) {
+        background-color: lightgray;
+    }
+</style>

@@ -1,0 +1,1244 @@
+<!doctype html>
+<html lang="en">
+     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <head>
+        <meta charset="UTF-8" />
+        <title>X線回折　レポート</title>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <link rel="stylesheet" href="./report.css" />
+    </head>
+    <body>
+        <h1></h1>
+        <div class = "id">1</div>
+        <div class = "bigtitle">物理学実験報告書</div>
+        <div class = "Title">X線回折レポート</div>
+        <div class = "neme">先端物理学科 学籍番号 6222098 林航平 (2組E班)</div>
+        <div class = "correction">
+        </div>
+        <div class = "dates">
+        <div class = "start">実験開始日</div>
+        <div class = "date">第一回 2024/09/20</div>
+        <div class = "date">第二回 2024/09/27</div>
+        </div>
+        <div class = "submit">2024/10/11</div>
+        <h1>X線回折　レポート</h1>
+        <p class="name"></p>
+        <h2>目的</h2>
+        <ol>
+            <li>1.X線の原理・相互作用・検出について学習する</li>
+            <li>2.結晶の構造をX線回折を利用して、特定する</li>
+        </ol>
+        <h2>原理</h2>
+        <h3>連続X線</h3>
+        <p>
+            エネルギーが連続的に分布しているX線のこと.エネルギーのピークは\(\frac{2}{3}eV\).
+            真空中で電子を加速させ、陽極にぶつける.その時、原子核からの引力によって制動がかかったときに失なわれたエネルギーがＸ線として発生する．実験的には磁場を利用して制動をかけ、発生させる.
+        </p>
+        <h3>特性X線</h3>
+        <p>
+            ある偏ったエネルギーを持つX線の事．このエネルギーは金属の種類によって固有である．真空中で電子を加速させ，陽極にぶつけるとき，原子の内核の電子をはじき出し，高準位の電子が低い準位に落ちてきた時の損失エネルギーにより発生する．
+        </p>
+        <h3>X線の相互作用</h3>
+        <p>
+            Ｘ線の相互作用には透過，散乱，吸収など多様なものが存在する．以下は相互作用の種類と特徴についてまとめた表である．
+        </p>
+        <table>
+            <caption>
+                相互作用の種類と性質
+            </caption>
+            <tr>
+                <th>相互作用の種類</th>
+                <th>性質</th>
+            </tr>
+            <tr>
+                <td>透過</td>
+                <td>相互作用は起こさずに物体を透過する</td>
+            </tr>
+            <tr>
+                <td>トムソン散乱</td>
+                <td>入射X線のエネルギーと波長は変化せず向きのみ変化する</td>
+            </tr>
+            <tr>
+                <td>コンプトン散乱</td>
+                <td>エネルギーが最外電子核に奪われ，エネルギーが減少する</td>
+            </tr>
+            <tr>
+                <td>Ｘ線吸収</td>
+                <td>内殻電子がはじかれ，吸収される</td>
+            </tr>
+            <tr>
+                <td>光電子放出</td>
+                <td>X線が物質に吸収され，電子が放出される</td>
+            </tr>
+            <tr>
+                <td>対生成</td>
+                <td>エネルギーの高いX線が原子核の近くを通るとき，陽電子陰電子の一つ五を消滅させる．<u>(文献1)</u></td>
+            </tr>
+        </table>
+        <h3>結晶中のX線の回折</h3>
+        <h4>結晶中のトムソン散乱</h4>
+        <p>結晶中の電子がＸ線によって強制振動され，Ｘ線を放出する現象</p>
+        <h4>偏光因子 \(H(\theta)\)</h4>
+        <p>Ｘ線において入射Ｘ線と散乱Ｘ線の強度の関係は式(1)の関係になる</p>
+        \begin{align} H(\theta) = \frac{1+\cos^22\theta}{2}\tag{1} \end{align}
+        <h4>原子構造決定</h4>
+        <p>
+            電子密度\(\rho(\mathbb{r})\)である物質に対し，そこに波束が\(\mathbb{k}_0\)のＸ線を入射する．その時散乱X線の波束\(\mathbb{k}\)は以下の条件を満たす
+        </p>
+        \begin{align} |\mathbb{k}_0|=|\mathbb{k}|\equiv k = \frac{1}{\lambda}\tag{2} \end{align}
+        <p>また，位相差\(\delta\)は以下のように定まる</p>
+        \begin{align} \delta & \equiv 2\pi\cdot\mathbb{r}\cdot(\mathbb{k}-\mathbb{k}_0)\\
+        &=2\pi\mathbb{r}\cdot\mathbb{K}\tag{3} \end{align}
+        <p>その時振幅\(f_A(\mathbb{K})\)は以下の式で定義される</p>
+        \begin{align} f_A(\mathbb{K}) = \int \rho(\mathbb{r})exp(2\pi i \mathbb{r}\cdot\mathbb{K})d^3\mathbb{r} \tag{4}
+        \end{align}
+        <p>この式を原子構造因子という</p>
+        <h4>結晶構造因子</h4>
+        <p>結晶格子中では電荷密度に並進対称性が存在するため，式(4)は単位格子の和で表すことができる</p>
+        \begin{align} f_A(\mathbb{K}) = \sum_x\sum_y\sum_z\int_{unit}\rho(\mathbb{R}(n_1,n_2,n_3)+d\mathbb{r}^{\prime})exp(2\pi
+        i(\mathbb{R}(n_1,n_2,n_3)+\mathbb{r}^{\prime})-\mathbb{K})d^3\mathbb{r}^{\prime} \tag{5}\end{align}
+        <p>
+            ある関数系\(\mathbb{a},\mathbb{b},\mathbb{c}\)で\(\mathbb{R}(n_1,n_2,n_3)\)が展開されているとき，正規直交系である\(\mathbb{a}^{*},\mathbb{b}^{*},\mathbb{c}^{*}\)によって\(\mathbb{K}\)を展開することを考える．
+        </p>
+        \begin{align} \mathbb{R} = n_1\mathbb{a}+n_2\mathbb{b}+n_3\mathbb{c}\tag{6} \\ \mathbb{K} =
+        h\mathbb{a}^{*}+k\mathbb{b}^{*}+l\mathbb{c}^{*}\tag{7} \end{align}
+        <p>
+            以下のようなラウエ条件を満たすような適当な\(\mathbb{a},\mathbb{b},\mathbb{c}\)を持ってくると式(5)は式(9)になる(\(V_{cell}:単位格子の体積\))
+        </p>
+        \begin{align} \begin{pmatrix} \mathbb{a}^{*}\\ \mathbb{b}^{*}\\\mathbb{c}^{*}
+        \end{pmatrix}\cdot(\mathbb{a},\mathbb{b},\mathbb{c}) = \begin{pmatrix}1& 0 & 0\\0& 1 & 0\\0& 0 &
+        1\\\end{pmatrix}\tag{8}\end{align} \begin{align}F(\mathbb{K}) = \int_{0}^{1}\int_{0}^{1}\int_{0}^{1}\rho
+        \exp(2\pi i(xh+yk+zl))dxdydz\tag{9}\end{align}
+        <p>結晶構造因子は実験的には積分強度\(I\)を用いて求めることが可能である</p>
+        \begin{align} F = \sqrt{\frac{I*\sin^2(\theta)\cos(\theta)}{1+\cos^2(2\theta)\cos^2(26.56^{\circ})}}\tag{10}
+        \end{align}
+        <h4>電子密度</h4>
+        <p>電子密度\(\rho(x,y,z)\)は逆フーリエ和として，以下の式で表すことができる．</p>
+        \begin{align} \rho(x,y,z) = \frac{1}{V}\sum_{hkl}F(hkl)\exp(-2\pi i(kx+ky+lz))\tag{11} \end{align}
+        <h4>エヴァルト球</h4>
+        <p>
+            ラウエ条件を図解したものである．\(\mathbb{k}\)と\(\mathbb{k}_0\)の始点を合わせる．この時\(\mathbb{k}_0\)の終点を原点として生じる逆格子点\(\mathbb{G}(hkl)\)が球面上に乗ったとき解析X線が出るという解析ができる．この条件を式にすると以下の式になる
+        </p>
+        \begin{align} \frac{2\sin\theta}{\lambda} &= |\mathbb{G}_{hkl}|\\ &= \frac{1}{d_{hkl}}\tag{12}\\
+        &(d_{hkl}:単位格子間隔) \end{align}
+        <!--<h3>結晶中の対称性</h3>-->
+        <h2>ディフラクトメーター法</h2>
+        <h3>実験原理</h3>
+        <p>
+            本実験は結晶への入射X線の角度\(\theta\)を変えながら，回折波の強度を測定する．\(\theta\)の定義は以下の図の通りである．
+        </p>
+        <figure>
+            <img src="./image/kaisetukou.png" />
+            <figcaption>\(\theta\)の定義</figcaption>
+        </figure>
+        <p>
+            \(\theta\)を変え，回折波の強度ピークがN個存在したとき，\(i\)個目のピークの角度を\(\theta_{i}(1\leq i\leq
+            N)\)，そのピークの指数\(h,k,l\)を\(h_i,k_i,l_i(0\le l_i \leq k_i \leq
+            h_i)\)とする．その時，格子定数\(a_i\)は以下の式で求めることができる．
+        </p>
+        \begin{align} a_i = \frac{\sqrt{h_i^2+k_i^2+l_i^2}}{\sin\theta_i}\frac{\lambda}{2}\tag{13}\\
+        (\lambda:\mathrm{入射Ｘ線の波長}) \end{align}
+        <p>
+            本実験での入射Ｘ線の波長は\(\lambda = 0.154184\times
+            10^{-9}\mathrm{m}\)である．注意点として，結晶の構造が単純立方であれば任意の\(h,k,l\)に対してピークが存在するが，面心立方では\(h,k,l\)の偶奇がすべて一致するときのみ，体心立方では\(h+k+l\)が偶数のもののみ現れる．具体的には付録１に表を示す．
+        </p>
+        <h3>実験法</h3>
+        <p>X線発生装置として，Cu-K\(\alpha\)線を用いる.</p>
+        <div class="method">
+            1 X線の照射設定を行う．電圧は30kV,電流は20mAである．<br>
+            2 多結晶試料として銀，塩化ナトリウム，塩化カリウム，チタン酸ストロンチウム(以下STO)で以下の操作を繰り返す．
+            <div class="loop1">
+                2.1 図1の\(2\theta\)を\(15^{\circ}\sim
+                120^{\circ},0.02^{\circ}\)ずつで変化させながら，結晶からの回折波の強度を測定した．<br>
+                2.2 データを保存し，印刷した．
+            </div>
+        </div>
+        <h3>実験結果&lt;課題1D&gt; </h3>
+
+        <h4>Ag</h4>
+        <p>
+            多結晶試料として銀を使用し，入射Ｘ線の角度を変化させたときのピークは以下のように観測された.付録1の面心の欄を見ると，\(h^2+k^2+l^2\)
+            =
+            2,3,8,11,12,16と２連続，1，2連続，１...となっていることに気づく．図2の描像でも二つのピークが隣接しており，面心と推定するのが最も妥当である．図2のピークの上に表示してあるのはそのピークの指数である．
+        </p>
+        <figure>
+            <img src="./image/Ag.png" />
+            <figcaption>Agでの測定結果</figcaption>
+        </figure>
+        <p>このピークのデータと式(13)より格子定数aを計算したものが以下の表である．</p>
+        <table>
+            <caption>
+                銀での格子定数の計算
+            </caption>
+            <tbody id="Ag-table">
+                <tr>
+                    <th>**このメッセージはおかしいよ</th>
+                </tr>
+            </tbody>
+        </table>
+        <p>
+            表２の結果より銀の格子定数は<a id="Ag-a">**このメッセージはおかしいよ</a
+            >nmと推定できる．不確かさも十分小さく，銀の結晶が面心構造であるという推定の妥当性も示された．(考察)
+        </p>
+
+        <h4>NaCl</h4>
+        <p>
+            多結晶試料として塩化ナトリウムを使用し，入射Ｘ線の角度を変化させたときのピークは以下のように観測された.付録1の面心の欄を見ると，
+            銀のとき同様，図3の描像でも二つのピークが隣接しており，面心と推定するのが最も妥当である．図3のピークの上に表示してあるのはそのピークの指数である．
+        </p>
+        <figure>
+            <img src="./image/NaCl.png" />
+            <figcaption>NaClでの測定結果(考察)</figcaption>
+        </figure>
+        <p>このピークのデータと式(13)より格子定数aを計算したものが以下の表である．</p>
+        <table>
+            <caption>
+                塩化ナトリウムでの格子定数の計算
+            </caption>
+            <tbody id="NaCl-table">
+                <tr>
+                    <th>**このメッセージはおかしいよ</th>
+                </tr>
+            </tbody>
+        </table>
+        <p>
+            表3の結果より塩化ナトリウムの格子定数は<a id="NaCl-a">**このメッセージはおかしいよ</a
+            >nmと推定できる．不確かさも十分小さく，塩化ナトリウムが面心という推定の妥当性も示された．(考察)
+        </p>
+
+        <h4>KCl</h4>
+        <p>
+            多結晶試料として塩化カリウムを使用し，入射Ｘ線の角度を変化させたときのピークは以下のように観測された.図4を見ると，ほぼ等間隔に並んでいることがわかる．これでは体心構造なのか，単純立方なのか，面心立方なのかは不明である．まずはKClとNaClの結晶構造が同じであると考え，面心立方であると仮定して計算を進めていくこととする.(考察)
+        </p>
+        <figure>
+            <img src="./image/KCl.png" />
+            <figcaption>KClでの測定結果</figcaption>
+        </figure>
+        <p>このピークのデータと式(13)より格子定数aを計算したものが以下の表である．</p>
+        <table>
+            <caption>
+                塩化カリウムでの格子定数の計算
+            </caption>
+            <tbody id="KCl-table">
+                <tr>
+                    <th>**このメッセージはおかしいよ</th>
+                </tr>
+            </tbody>
+        </table>
+        <p>
+            表4の結果より塩化カリウムの格子定数は<a id="KCl-a">\(**このメッセージはおかしいよ\)</a>nmと推定できる．
+        </p>
+
+        <h4>STO</h4>
+        <p>
+            多結晶試料としてチタン酸ストロンチウムを使用し，入射Ｘ線の角度を変化させたときのピークは以下のように観測された.図5を見ると，ほぼ等間隔に並んでいることがわかる．さらに高いピークと低いピークがあり低,高,低,高,低,高,高,低,高...と並んでいる．この並び方は付録の体心構造のx,oに対応している．つまりはチタン酸ストロンチウムの格子は全体として単純立方構造であるが，高いところのみ見ると体心立方構造であることがわかる．
+        </p>
+        <figure>
+            <img src="./image/STO.png" />
+            <figcaption>STOでの測定結果</figcaption>
+        </figure>
+        <p>このピークのデータと式(13)より格子定数aを計算したものが以下の表である．</p>
+        <table>
+            <caption>
+                STO全体での格子定数の計算
+            </caption>
+            <tbody id="STOtableall">
+                <tr>
+                    <th>**このメッセージはおかしいよ</th>
+                </tr>
+            </tbody>
+        </table>
+        <p>この表より求められる格子定数は<a id="STOaall">\(**このメッセージはおかしいよ\)</a>nmと推定できる．</p>
+        <table>
+            <caption>
+                STOの高いピークでの格子定数の計算
+            </caption>
+            <tbody id="STOtabletall">
+                <tr>
+                    <th>**このメッセージはおかしいよ</th>
+                </tr>
+            </tbody>
+        </table>
+        <p>この表より求められる格子定数は<a id="STOatall">\(**このメッセージはおかしいよ\)</a>nmと推定できる．</p>
+
+        <h3>考察</h3>
+
+        <h4>考察１</h4>
+        <p>
+            ここでは銀，塩化ナトリウム，塩化カリウムが面心立方格子であるという論を強固にするため，単純立方，体心立方に関しても検証をする．見やすさのため，細かい計算は付録2にのせ，ここには結果のみ掲載する．
+        </p>
+        <table>
+            <caption>
+                それぞれの格子定数
+            </caption>
+            <tbody id="resultA">
+                <tr>
+                    <th>試料</th>
+                    <th>単純立方 \(a\)/nm</th>
+                    <th>体心立方 \(a\)/nm</th>
+                    <th>面心立方 \(a\)/nm</th>
+                </tr>
+            </tbody>
+        </table>
+        <p>
+            単純立方格子や体心立方格子と仮定すると，不確かさが大きく仮定が誤っていることがわかるが，塩化カリウムの単純立方格子では不確かさが小さく面心立方より優れていると思われる．この点に関しては考察2で行う．
+        </p>
+        <h4>考察2</h4>
+        <p>
+            ここでは塩化カリウムの単純立方格子の可能性について探る.以下に示すのは，X線照射を行った後の結晶の様子とその際の中心の色の拡大図である．この変色の事を色中心という．
+        </p>
+        <figure>
+            <img src="./image/NaCl補色.png" />
+            <figcaption>STOでの測定結果</figcaption>
+        </figure>
+        <figure>
+            <img src="./image/KCl補色.png" />
+            <figcaption>STOでの測定結果</figcaption>
+        </figure>
+        <p>
+            試料の中心色は試料内の電子が補色を吸収した結果，それ以外の色を反射して見えている．NaCl，KClの基底状態から第一励起状態の遷移のみ考え，井戸型ポテンシャルのモデルをもちいる．エネルギーは以下の式で表される．
+        </p>
+        \begin{align} E = \frac{\pi^2 \hbar^2 n^2}{me\frac{a^2}{2}}\tag{14} \end{align}
+        <p>
+            以上の式より，エネルギーおよびエネルギー差は格子定数の2乗に反比例する．塩化ナトリウムの吸収エネルギーは2.64eV,塩化カリウムの吸収エネルギーは2.18eVであるため，単純立方格子だろするとこれに矛盾する．よって銀，塩化ナトリウム，塩化カリウムは面心立方格子である．
+        </p>
+
+        <h4>考察3</h4>
+        <p>
+            NaClのピーク分布に関しての考察をここでは行う.実はNaCl全体では面心立方格子であるがピークの大きさがまばらであることがわかる．これは結晶構造因子が関係している．NaClの結晶構造因子は式(4)で定義されたfを用いて以下の式で表す．
+        </p>
+        \begin{align} F(hkl) = f_{Cl}[1+e^{\pi i(h+k)}+e^{\pi i(h+l)}+e^{\pi i(l+h)}]+f_{Na}[e^{\pi i h}+e^{\pi i
+        k}+e^{\pi i l}+e^{\pi i (h+k+l)}]\tag{15} \end{align}
+        <p>
+            式(12)を見るとh,k,lがすべて偶数の場合には\(4[f_{Cl}+f_{Na}]\)の寄与が，全て奇数の場合には\(4[f_{Cl}-f_{Na}]\)と構造因子の差が寄与する．式(4)より，\(f_{A}\)には電子密度が入っている．NaClの結晶では\(Na^{+}\)には10個の電子，\(Cl^{-}\)には18個の電子が入っているため，すべて偶数のときの結晶構造因子では電子28個分，全て奇数の指数では電子8個分であるため大きさに差が出た．
+        </p>
+        <p>またKClの結晶では陽イオン，陰イオンともに18個であるため，全て奇数の指数では完全に消滅する．</p>
+
+        <h4>考察4</h4>
+        <p>
+            ここではNaClの原子構造に迫ろうと思う．本実験ではピークの角度とともに積分強度も測定している．式(11)より電子密度のx部分のみ計算してみる．NaClのピークの指数を入れ替えをを考え，|h|により，分類を行いながら積分強度の足し合わせを行った．
+        </p>
+        <!--<table>
+            <caption>cosフーリエ展開のそれぞれの係数</caption>
+            <tbody id = "keisuuTable">
+                <tr><th>**このメッセージはおかしいよ</th></tr>
+            </tbody>
+        </table>-->
+        <table>
+            <caption>
+                電子密度
+            </caption>
+            <tbody id="rhoTable">
+                <tr>
+                    <th>**このメッセージはおかしいよ</th>
+                </tr>
+            </tbody>
+        </table>
+        <div id="myPlot"></div>
+        <p>上の図にて高いピークと低いピークが観測されている．NaClの結晶なので，高いピークが電子が多く含有されているCl，低いピークがNaの原子の位置である．</p>
+        <h4>考察5</h4>
+        <p>&lt;課題4A&gt;ここでは式(10)における\(26.56^{\circ}\)の意味について考察する．この26.56^{\circ}は熱振動を意味し，，平均X,標準偏差Bの正規分布に従う位置に存在するものとする．その時原子構造因子は以下のように表される.</p>
+        \begin{align}
+        f_A(K) = (2\pi B^2)^{-\frac{1}{2}}\int_{-\infty}^{\infty}\rho(x-X)exp(-\frac{X^2}{2B^2})dX\cdot exp(2\pi i Kx)dx\tag{16}
+        \end{align}
+        <p>この二重積分をまともに取り扱うことは困難であるため，畳み込み積のフーリエ変換がそれぞれの畳み込み積になることを利用する．正規分布部分のフーリエ変換は以下の式になる</p>
+        \begin{align}
+        \int_{-\infty}^{\infty}\exp(-x^2/2B^2)\exp(2\pi iKx)dx = B\exp(-2\pi^2B^2K^2)\tag{17}
+        \end{align}
+        <p>式16より熱振動のある構造因子\(f_A(K)\)は以下の式になる</p>
+        \begin{align}
+        f_{A}(K) = f(K)\cdot Be^{-2\pi^2B^2K^2}\tag{18}
+        \end{align}
+        <p>したがって回折強度は構造因子の絶対値の二乗になることより，\(e^{-4\pi^2B^2K^2}\)のオーダーで減衰していくことがわかる．</p>
+        <h4>考察6</h4>
+        <p>&lt;課題2D&gt; ここではSTOのピークにおいて，高いものと低いものがある理由について考察を行う．STOの結晶格子に関してSr,Tiそれぞれにのみに注目すれば，単純立方格子そのものである．しかし，ペロブスカイト構造ではSr,Tiの位置関係として体心立方格子であることが認められる．電子数が等しくなればKClのように完全に消えてしますが，Tiは22番，Srは38番と離れがあるため，強弱のある干渉がみられた</p>
+        <h2>ラウエ写真法</h2>
+        <h3>実験原理</h3>
+        <p>
+            ラウエ写真法ではX線に感光するフィルムを用いて，単結晶の回折X線がどこに回折されているかを調べることによって，結晶構造を推定する方法である．本実験ではフィルムを使用せず，その代わりコンピュータでの解析を行う．ラウエ写真ではいくつかの直線が現れることがある．その直線は入射方向と垂直な原子構造の辺と垂直な線である．また入射方向に垂直でない場合，回折X線の回折点は双曲線の形状になる．
+        </p>
+        <h3>実験法</h3>
+        <p>単結晶格子としてKBr,放射線源としてWを用いて実験を行う．</p>
+        <div class="method">
+            1 以下の操作を図**~図**の方向で放射線を照射し，回折Ｘ線の分布を調べる
+            <div class="loop1">
+                1.1
+                <strong>必ず安全装置を切った上</strong
+                >で，結晶を図と同じ角度に調整し，コンピュータ上の"IPXray"に必要事項を入力し，X線装置を稼働させる．<br />
+                1.2 "IP-converter"で回折x線の分布を解析し，Greninger chartを用いて，原点のずれを修正する．<br />
+                1.3 再び，X線照射装置を稼働させ，撮影できたラウエ写真を保存した．<br />
+            </div>
+            2 X線装置をアイドリング状態に戻し，２０分後十分に冷却できた状態で電源を切る．
+        </div>
+        <figure>
+            <img src="./image/defdis.png" />
+            <figcaption>方向の定義</figcaption>
+        </figure>
+        <h3>実験結果&lt;課題1L&gt;</h3>
+        <h4>100方向での撮影</h4>
+        <p>以下に撮影した結果の画像を示す</p>
+        <figure>
+            <img src="./image/100.jpg" />
+            <figcaption>100方向でのX線の分布</figcaption>
+        </figure>
+        <p>
+            上図で横軸を\(0^\circ\)とすると，\(0^\circ,45^\circ,90^{\circ},135^{\circ}\)の直線が見られる．\(0^{\circ},45^\circ,90^{\circ},135^{\circ}\)では対称性がみられるため，これは4回対称である．したがって，この画像には\(45^{\circ}\)傾いた正方形(赤)と傾いていない正方形(青)を書くことができる．(考察)
+        </p>
+        <figure>
+            <img src="./image/100aft.png" />
+            <figcaption>100方向でのX線の分布(解析後)</figcaption>
+        </figure>
+        <h4>110方向での撮影</h4>
+        <p>以下に撮影した結果の画像を示す</p>
+        <figure>
+            <img src="./image/110.jpg" />
+            <figcaption>110方向でのX線の分布</figcaption>
+        </figure>
+        <p>
+            上図で横軸0\(\ ^\circ\)とすると，\(0^{/circ},35^\circ,90^{\circ},145^{\circ}\)の直線が見られる．(0^{/circ},90^{\circ}\)では対称性がみられる(2回対称)(考察)．この画像には\(45^{\circ}\)傾いた正方形(赤)と傾いていない<strong>長</strong>方形(青)が複数見て取れる(考察).また拾えていない点が複数あることにも注意したい(ミドリ丸部).
+        </p>
+        <figure>
+            <img src="./image/110aft.png" />
+            <figcaption>110方向でのX線の分布(解析後)</figcaption>
+        </figure>
+        <h4>111方向での撮影</h4>
+        <p>以下に撮影した結果の画像を示す</p>
+        <figure>
+            <img src="./image/111.jpg" />
+            <figcaption>111方向でのX線の分布</figcaption>
+        </figure>
+        <p>上図で横軸0\(\ ^\circ\)とすると，\(0^{/circ},60^\circ,120^{\circ}\)の直線が見られる(0^{/circ},60^{\circ},120^{/circ}\)では対称性がみられる(3回対称)．この画像では三角形の組，二つ(赤，青)を描画できる(考察)．こちらでも拾えていない点がある事に注意が必要である(考察).</p>
+        <figure>
+            <img src="./image/111aft.png" />
+            <figcaption>111方向でのX線の分布(解析後)</figcaption>
+        </figure>
+        <h3>考察</h3>
+        <h4>100方向のラウエ写真について</h4>
+        <p>100方向から見た原子構造は以下の図のようになる．重なっている原子は視認性のため，少しずらして描画した</p>
+        <figure>
+            <img src="./image/100gensi.png" />
+            <figcaption>100方向での結晶配置と晶帯軸</figcaption>
+        </figure>
+        <p>
+            全ての辺に対して垂直な線を引くと，結晶の距離が等しくそれぞれが垂直である関係から，図**に示すように傾いていない正方形と，45\(\
+            ^\circ\)傾いた正方形ができることがわかる．
+        </p>
+
+        <h4>110方向のラウエ写真について</h4>
+        <p>110方向から見た原子構造は以下の図のようになる</p>
+        <figure>
+            <img src="./image/110gensi.png" />
+            <figcaption>110方向での結晶配置と晶帯軸</figcaption>
+        </figure>
+        <p>
+            全ての辺に対して垂直な線を引くと，それぞれが垂直であるが，長さが異なる(対角線部は等しい)という関係から，図**に示すように傾いていない長方形と，45\(\
+            ^\circ\)傾いた正方形ができることがわかる．
+        </p>
+
+        <h4>111方向のラウエ写真について</h4>
+        <p>111方向から見た原子構造は以下の図のようになる</p>
+        <figure>
+            <img src="./image/111gensi.png" />
+            <figcaption>111方向での結晶配置と晶帯軸</figcaption>
+        </figure>
+        <p>
+            全ての辺に対して垂直な線を引くと，6角形ができそうであるが，ラウエ写真を見ると3角形二つに分離していることがわかる．これは立法体の各頂点の距離を見比べるとわかり，紫は手前にあり，青は奥にある．これらの関連性より三角形二つに分かれている．
+        </p>
+        <h3>考察</h3>
+        <h4>2回対称と上下左右対称性について&lt;課題2L&gt;</h4>
+        <p>2回対称があり，左右対称であれば上下対称であるということをここで示したいと思う．2回対称である，つまり\(\pi\)に対してベクトルが不変であるというのは式**で示される．</p>
+        \begin{align}
+        \begin{pmatrix}
+        -1 & 0 \\
+        0 & -1 \\
+        \end{pmatrix}\mathbb{x} = \mathbb{x}\tag{19}
+        \end{align}
+        <p>同様に左右対称とは以下の式で表される．</p>
+        \begin{align}
+        \begin{pmatrix}
+        -1 & 0 \\
+        0 & 1 \\
+        \end{pmatrix}\mathbb{x} = \mathbb{x}\tag{20}
+        \end{align}
+        <p>この時2回対称かつ左右対称であるならば上下対称であることを示せる</p>
+        \begin{align}
+        \begin{pmatrix}
+        -1 & 0 \\
+        0 & -1 \\
+        \end{pmatrix}\begin{pmatrix}
+        -1 & 0 \\
+        0 & 1 \\
+        \end{pmatrix}\mathbb{x} = \begin{pmatrix}
+        1 & 0 \\
+        0 & -1 \\
+        \end{pmatrix}\mathbb{x}\\
+         = \mathbb{x}\tag{21}
+        \end{align}
+        <p>式21は上下対称の行列になっている.<br>
+            よって2回対称\(\cap\)左右対称\(\rightarrow\)上下対称が示された．この上下対称，左右対称，2回対称は任意の行列を選んで掛けたとしても単位行列もしくは他の種の行列になるので，群として閉じていることがわかる.</p>
+        <h3>3回対称についても確認する</h3>
+        <p>次に3回対称\(\cap\)上下対称が群をなしているかについて確認したい.
+        三回対称は以下の行列で示される(\(120^{\circ}と240^{\circ}\)があることに注意すること)</p>
+        \begin{align}
+        \begin{pmatrix}
+        -\frac{1}{2} & -\frac{\sqrt{3}}{2}\\
+        \frac{\sqrt{3}}{2} & -\frac{1}{2}
+        \end{pmatrix}\mathbb{x}
+         = \mathbb{x} \tag{22}
+        \end{align}
+        \begin{align}
+        \begin{pmatrix}
+        -\frac{1}{2} & \frac{\sqrt{3}}{2}\\
+        -\frac{\sqrt{3}}{2} & -\frac{1}{2}
+        \end{pmatrix}\mathbb{x}
+         = \mathbb{x} \tag{23}
+        \end{align}
+        <p>式{23}の\(240^{\circ}\)に上下対称を乗じる</p>
+        \begin{align}
+        \begin{pmatrix}
+        -\frac{1}{2} & -\frac{\sqrt{3}}{2}\\
+        \frac{\sqrt{3}}{2} & \frac{1}{2}
+        \end{pmatrix}\mathbb{x} = \mathbb{x} \tag{24}
+        \end{align}
+        <p>式24は3回対称のものでも上下対称でもない．よって群をなさない．しかしこれに左右対称を加えると群をなすことができる．これは3回対称かつ左右対称であれば6回対称であることは明らかである．</p>
+        <p>四回対称のものは\(90^{\circ},180^{\circ},270^{\circ}\)と上下左右の行列で群をなすことができる．</p>
+        
+        <h2>結論</h2>
+        <ul>
+            <li>
+                X線の回折特性を利用し，銀，塩化ナトリウム，塩化カリウム，チタン酸ナトリウムの格子定数を表**のように求めることができた．
+            </li>
+            <li>ラウエ写真法を用いて臭化カリウムの構造が体心立方格子であると決定した．</li>
+        </ul>
+        <table>
+            <tbody id="ansTable">
+                <tr>
+                    <th>**このメッセージはおかしいよ**</th>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="hutoku">
+            <h1>付録1</h1>
+            <table>
+                <tbody id="tbl">
+                    <!-- 行はここに追加されます -->
+                </tbody>
+            </table>
+
+            <h1>付録2</h1>
+
+            <table>
+                <caption>
+                    銀が単純立方格子であったときの格子定数
+                </caption>
+                <tbody id="AgSimpleTable">
+                    <tr>
+                        <th>**このメッセージはおかしいよ</th>
+                    </tr>
+                </tbody>
+            </table>
+            <p>この時格子定数は<a id="AgSimpleA">**このメッセージはおかしいよ</a>nmとなる．</p>
+            <p>同様に体心立方に関しても行うと以下の表になる</p>
+            <table>
+                <caption>
+                    銀が体心立方格子であったときの格子定数
+                </caption>
+                <tbody id="AgTaisinTable">
+                    <tr>
+                        <th>**このメッセージはおかしいよ</th>
+                    </tr>
+                </tbody>
+            </table>
+            <p>この時格子定数は<a id="AgTaisinA">**このメッセージはおかしいよ</a>nmとなる．</p>
+
+            <p>
+                次に塩化ナトリウムが面心立方格子であるという論を強固にするため，単純立方，体心立方に関しても検証をする
+            </p>
+            <table>
+                <caption>
+                    塩化ナトリウムが単純立方格子であったときの格子定数
+                </caption>
+                <tbody id="NaClSimpleTable">
+                    <tr>
+                        <th>**このメッセージはおかしいよ</th>
+                    </tr>
+                </tbody>
+            </table>
+            <p>この時格子定数は<a id="NaClSimpleA">**このメッセージはおかしいよ</a>nmとなる．</p>
+            <p>同様に体心立方に関しても行うと以下の表になる</p>
+            <table>
+                <caption>
+                    塩化ナトリウムが体心立方格子であったときの格子定数
+                </caption>
+                <tbody id="NaClTaisinTable">
+                    <tr>
+                        <th>**このメッセージはおかしいよ</th>
+                    </tr>
+                </tbody>
+            </table>
+            <p>この時格子定数は<a id="NaClTaisinA">**このメッセージはおかしいよ</a>nmとなる．</p>
+
+            <p>
+                ここでは塩化カリウムが面心立方格子であるという論を強固にするため，単純立方，体心立方に関しても検証をする
+            </p>
+            <table>
+                <caption>
+                    塩化カリウムが単純立方格子であったときの格子定数
+                </caption>
+                <tbody id="KClSimpleTable">
+                    <tr>
+                        <th>**このメッセージはおかしいよ</th>
+                    </tr>
+                </tbody>
+            </table>
+            <p>この時格子定数は<a id="KClSimpleA">**このメッセージはおかしいよ</a>nmとなる．</p>
+            <p>同様に体心立方に関しても行うと以下の表になる</p>
+            <table>
+                <caption>
+                    塩化カリウムが体心立方格子であったときの格子定数
+                </caption>
+                <tbody id="KClTaisinTable">
+                    <tr>
+                        <th>**このメッセージはおかしいよ</th>
+                    </tr>
+                </tbody>
+            </table>
+            <p>この時格子定数は<a id="KClTaisinA">**このメッセージはおかしいよ</a>nmとなる．</p>
+        </div>
+
+
+        <script>
+            let ans = Array(101).fill(null); // ここでans配列をnullで初期化
+            let mode = 0;
+            function chen(num) {
+                console.log(num);
+                hyouzi(num);
+            }
+            function getoverlap(x, y, z) {
+                let p = 6;
+                if (x > 0) p *= 2;
+                if (y > 0) p *= 2;
+                if (z > 0) p *= 2;
+                if (x == y && y == z) {
+                    p = p / 6;
+                } else if (x == y || x == z || y == z) {
+                    p = p / 2;
+                }
+                return p;
+            }
+
+            function isMensin(x, y, z) {
+                if (x % 2 === y % 2 && y % 2 === z % 2) {
+                    return "O"; // O は文字列に変更
+                }
+                return "x";
+            }
+
+            function isTaisin(x, y, z) {
+                if ((x + y + z) % 2 === 0) {
+                    return "O";
+                }
+                return "x";
+            }
+            for (let i = 1; i <= 100; i++) {
+                ans[i] = [];
+            }
+            for (let h = 1; h <= 10; h++) {
+                for (let k = 0; k <= h; k++) {
+                    for (let l = 0; l <= k; l++) {
+                        let a = Math.pow(h, 2) + Math.pow(k, 2) + Math.pow(l, 2);
+                        if (a <= 100) {
+                            ans[a].push([h, k, l]);
+                        }
+                    }
+                }
+            }
+            hyouzi(0);
+            function hyouzi(mode) {
+                console.log("hyouzikannsuu");
+                const tt = document.getElementById("tbl");
+                tt.innerHTML = `<tr>
+                <th>\\(h^2+k^2+l^2\\)</th>
+                <th>\\(h\\)</th>
+                <th>\\(k\\)</th>
+                <th>\\(l\\)</th>
+                <th>多重度</th>
+                <th>面心</th>
+                <th>体心</th>
+            </tr>`;
+                for (let i = 1; i <= 50; i++) {
+                    for (let j = 0; j < ans[i].length; j++) {
+                        if (mode == 2 && isTaisin(ans[i][j][0], ans[i][j][1], ans[i][j][2]) == "O") {
+                            tt.innerHTML += `<tr>
+                    <td>${i}</td>
+                    <td>${ans[i][j][0]}</td>
+                    <td>${ans[i][j][1]}</td>
+                    <td>${ans[i][j][2]}</td>
+                    <td>${getoverlap(ans[i][j][0], ans[i][j][1], ans[i][j][2])}</td>
+                    <td>${isMensin(ans[i][j][0], ans[i][j][1], ans[i][j][2])}</td>
+                    <td>${isTaisin(ans[i][j][0], ans[i][j][1], ans[i][j][2])}</td>
+                </tr>`;
+                        }
+                        if (mode == 1 && isMensin(ans[i][j][0], ans[i][j][1], ans[i][j][2]) == "O") {
+                            tt.innerHTML += `<tr>
+                    <td>${i}</td>
+                    <td>${ans[i][j][0]}</td>
+                    <td>${ans[i][j][1]}</td>
+                    <td>${ans[i][j][2]}</td>
+                    <td>${getoverlap(ans[i][j][0], ans[i][j][1], ans[i][j][2])}</td>
+                    <td>${isMensin(ans[i][j][0], ans[i][j][1], ans[i][j][2])}</td>
+                    <td>${isTaisin(ans[i][j][0], ans[i][j][1], ans[i][j][2])}</td>
+                </tr>`;
+                        }
+                        if (mode == 0) {
+                            tt.innerHTML += `<tr>
+                    <td>${i}</td>
+                    <td>${ans[i][j][0]}</td>
+                    <td>${ans[i][j][1]}</td>
+                    <td>${ans[i][j][2]}</td>
+                    <td>${getoverlap(ans[i][j][0], ans[i][j][1], ans[i][j][2])}</td>
+                    <td>${isMensin(ans[i][j][0], ans[i][j][1], ans[i][j][2])}</td>
+                    <td>${isTaisin(ans[i][j][0], ans[i][j][1], ans[i][j][2])}</td>
+                </tr>`;
+                        }
+                    }
+                }
+            }
+        </script>
+    </body>
+</html>
+<script>
+    class Peak {
+        constructor(deg, h, k, l, double, storange = 0) {
+            this.deg = deg;
+            this.h = h;
+            this.k = k;
+            this.l = l;
+            this.double = double;
+            this.strange = storange;
+        }
+
+        // 格子定数aを計算するメソッド
+        calcA() {
+            let A =
+                (0.154194 * Math.sqrt(Math.pow(this.h, 2) + Math.pow(this.k, 2) + Math.pow(this.l, 2))) /
+                (2 * Math.sin(((this.deg / 2) * Math.PI) / 180));
+            return A;
+        }
+    }
+
+    function createTable(id, data) {
+        const Id = document.getElementById(id);
+        console.log(id, "テーブル作成中", data); // デバッグ用
+
+        // テーブルのヘッダー部分を作成
+        let tempStr = "";
+
+        tempStr = `<tr>`;
+        for (let i = 0; i < data[0].length; i++) {
+            tempStr += `<th>${data[0][i]}</th>`; // <th>タグを作成
+        }
+        tempStr += `</tr>`; // 1行としてまとめる
+
+        console.log(tempStr);
+        // テーブルの行を作成
+        for (let i = 1; i < data.length; i++) {
+            tempStr += `<tr>`;
+            for (let j = 0; j < data[i].length; j++) {
+                tempStr += `<td>${data[i][j]}</td>`;
+            }
+            tempStr += `</tr>`;
+        }
+        Id.innerHTML = tempStr;
+    }
+
+    class Ag {
+        constructor() {
+            this.Peaks = [
+                new Peak(37.9825, 1, 1, 1, 8),
+                new Peak(44.1553, 2, 0, 0, 6),
+                new Peak(64.4083, 2, 2, 0, 12),
+                new Peak(77.2095, 3, 1, 1, 24),
+                new Peak(81.477, 2, 2, 2, 8),
+                new Peak(97.8411, 4, 0, 0, 6),
+                new Peak(110.5203, 3, 3, 1, 24),
+                new Peak(114.8369, 4, 2, 0, 24)
+            ];
+        }
+    }
+
+    class Nacl {
+        constructor() {
+            this.Peaks = [
+                new Peak(27.3117, 1, 1, 1, 8, 35.05),
+                new Peak(31.6696, 2, 0, 0, 6, 2186.78),
+                new Peak(45.4009, 2, 2, 0, 12, 385.81),
+                new Peak(53.8242, 3, 1, 1, 24, 14.9),
+                new Peak(56.4327, 2, 2, 2, 8, 85.76),
+                new Peak(66.1731, 4, 0, 0, 6, 203.91),
+                new Peak(73.0373, 3, 3, 1, 24, 4.15),
+                new Peak(75.2277, 4, 2, 0, 24, 117.1),
+                new Peak(83.9123, 4, 2, 2, 24, 62.47),
+                new Peak(90.349, 5, 1, 1, 24, 7.65),
+                new Peak(101.0792, 4, 4, 0, 12, 26.8),
+                new Peak(107.7157, 5, 3, 1, 48, 8.67),
+                new Peak(109.9657, 6, 0, 0, 6, 83.43),
+                new Peak(119.3921, 6, 2, 0, 24, 45.88)
+            ];
+        }
+    }
+
+    class KCl {
+        constructor() {
+            this.Peaks = [
+                new Peak(28.2894, 2, 0, 0, 6),
+                new Peak(40.4675, 2, 2, 0, 12),
+                new Peak(50.1475, 2, 2, 2, 8),
+                new Peak(58.6137, 4, 0, 0, 6),
+                new Peak(66.3648, 4, 2, 0, 24),
+                new Peak(73.6305, 4, 2, 2, 24),
+                new Peak(87.5853, 4, 4, 0, 12),
+                new Peak(94.4751, 6, 0, 0, 6),
+                new Peak(101.4074, 6, 2, 0, 24),
+                new Peak(108.5891, 6, 2, 2, 24),
+                new Peak(116.2924, 4, 4, 4, 8)
+            ];
+        }
+    }
+
+    class STOmn {
+        constructor() {
+            this.Peaks = [
+                new Peak(22.486, 1, 0, 0, 6),
+                new Peak(32.1232, 1, 1, 0, 12),
+                new Peak(39.6949, 1, 1, 1, 8),
+                new Peak(46.2395, 2, 0, 0, 6),
+                new Peak(52.1649, 2, 1, 0, 24),
+                new Peak(57.5817, 2, 1, 1, 24),
+                new Peak(67.6194, 2, 2, 0, 12),
+                new Peak(72.3312, 3, 0, 0, 30),
+                new Peak(76.9991, 3, 1, 0, 24),
+                new Peak(81.5399, 3, 1, 1, 24),
+                new Peak(86.0164, 2, 2, 2, 8),
+                new Peak(90.5393, 3, 2, 0, 24),
+                new Peak(94.9622, 3, 2, 1, 48),
+                new Peak(104.0817, 4, 0, 0, 6),
+                new Peak(108.7038, 3, 2, 2, 48),
+                new Peak(113.4775, 3, 3, 0, 36),
+                new Peak(118.4715, 3, 3, 1, 24)
+            ];
+        }
+    }
+
+    class STOpk {
+        constructor() {
+            this.Peaks = [
+                new Peak(32.1232, 1, 1, 0, 12),
+                new Peak(46.2395, 2, 0, 0, 6),
+                new Peak(57.5817, 2, 1, 1, 24),
+                new Peak(67.6194, 2, 2, 0, 12),
+                new Peak(76.9991, 3, 1, 0, 24),
+                new Peak(86.0164, 2, 2, 2, 8),
+                new Peak(94.9622, 3, 2, 1, 48),
+                new Peak(104.0817, 4, 0, 0, 6),
+                new Peak(108.7038, 3, 2, 2, 48),
+                new Peak(113.4775, 3, 3, 0, 36)
+            ];
+        }
+    }
+
+    class Agsimple {
+        constructor() {
+            this.Peaks = [
+                new Peak(37.9825, 1, 0, 0, 6),
+                new Peak(44.1553, 1, 1, 0, 12),
+                new Peak(64.4083, 1, 1, 1, 8),
+                new Peak(77.2095, 2, 0, 0, 6),
+                new Peak(81.477, 2, 1, 0, 24),
+                new Peak(97.8411, 2, 1, 1, 24),
+                new Peak(110.5203, 2, 2, 0, 12),
+                new Peak(114.8369, 2, 2, 1, 24)
+            ];
+        }
+    }
+
+    class Agtaisin {
+        constructor() {
+            this.Peaks = [
+                new Peak(37.9825, 1, 1, 0, 12),
+                new Peak(44.1553, 2, 0, 0, 6),
+                new Peak(64.4083, 2, 1, 1, 24),
+                new Peak(77.2095, 2, 2, 0, 12),
+                new Peak(81.477, 3, 1, 0, 24),
+                new Peak(97.8411, 2, 2, 2, 8),
+                new Peak(110.5203, 3, 2, 1, 48),
+                new Peak(114.8369, 4, 0, 0, 6)
+            ];
+        }
+    }
+
+    class Naclsimple {
+        constructor() {
+            this.Peaks = [
+                new Peak(27.3117, 1, 0, 0, 8),
+                new Peak(31.6696, 1, 1, 0, 6),
+                new Peak(45.4009, 1, 1, 1, 12),
+                new Peak(53.8242, 2, 0, 0, 24),
+                new Peak(56.4327, 2, 1, 0, 8),
+                new Peak(66.1731, 2, 1, 1, 6),
+                new Peak(73.0373, 2, 2, 0, 24),
+                new Peak(75.2277, 2, 2, 1, 24),
+                new Peak(83.9123, 3, 0, 0, 24),
+                new Peak(90.349, 3, 1, 0, 24),
+                new Peak(101.0792, 3, 1, 1, 12),
+                new Peak(107.7157, 2, 2, 2, 48),
+                new Peak(109.9657, 3, 2, 0, 6),
+                new Peak(119.3921, 3, 2, 1, 24)
+            ];
+        }
+    }
+
+    class Nacltaisin {
+        constructor() {
+            this.Peaks = [
+                new Peak(27.3117, 1, 1, 0, 8),
+                new Peak(31.6696, 2, 0, 0, 6),
+                new Peak(45.4009, 2, 1, 1, 12),
+                new Peak(53.8242, 2, 2, 0, 24),
+                new Peak(56.4327, 3, 1, 0, 8),
+                new Peak(66.1731, 2, 2, 2, 6),
+                new Peak(73.0373, 3, 2, 1, 24),
+                new Peak(75.2277, 4, 0, 0, 24),
+                new Peak(83.9123, 3, 3, 0, 24),
+                new Peak(90.349, 4, 1, 1, 24),
+                new Peak(101.0792, 3, 3, 0, 12),
+                new Peak(107.7157, 4, 1, 1, 48),
+                new Peak(109.9657, 4, 2, 0, 6),
+                new Peak(119.3921, 3, 3, 2, 24)
+            ];
+        }
+    }
+
+    class Kclsimple {
+        constructor() {
+            this.Peaks = [
+                new Peak(28.2894, 1, 0, 0, 6),
+                new Peak(40.4675, 1, 1, 0, 12),
+                new Peak(50.1475, 1, 1, 1, 8),
+                new Peak(58.6137, 2, 0, 0, 6),
+                new Peak(66.3648, 2, 1, 0, 24),
+                new Peak(73.6305, 2, 1, 1, 24),
+                new Peak(87.5853, 2, 2, 0, 12),
+                new Peak(94.4751, 2, 2, 1, 6),
+                new Peak(101.4074, 3, 1, 0, 24),
+                new Peak(108.5891, 3, 1, 1, 24),
+                new Peak(116.2924, 2, 2, 2, 8)
+            ];
+        }
+    }
+
+    class Kcltaisin {
+        constructor() {
+            this.Peaks = [
+                new Peak(28.2894, 1, 1, 0, 6),
+                new Peak(40.4675, 2, 0, 0, 12),
+                new Peak(50.1475, 2, 1, 1, 8),
+                new Peak(58.6137, 2, 2, 0, 6),
+                new Peak(66.3648, 3, 1, 0, 24),
+                new Peak(73.6305, 2, 2, 2, 24),
+                new Peak(87.5853, 3, 2, 1, 12),
+                new Peak(94.4751, 4, 0, 0, 6),
+                new Peak(101.4074, 3, 3, 0, 24),
+                new Peak(108.5891, 4, 1, 1, 24),
+                new Peak(116.2924, 4, 2, 0, 8)
+            ];
+        }
+    }
+
+    class NaClInDouble {
+        constructor() {
+            this.Peaks = [
+                new Peak(27.3117, 1, 1, 1, 8, 35.05 / 8),
+                new Peak(31.6696, 2, 0, 0, 6, 2186.78 / 6),
+                new Peak(45.4009, 2, 2, 0, 12, 385.81 / 12),
+                new Peak(53.8242, 3, 1, 1, 24, 14.9 / 24),
+                new Peak(56.4327, 2, 2, 2, 8, 85.76 / 8),
+                new Peak(66.1731, 4, 0, 0, 6, 203.91 / 6),
+                new Peak(73.0373, 3, 3, 1, 24, 4.15 / 24),
+                new Peak(75.2277, 4, 2, 0, 24, 117.1 / 24),
+                new Peak(83.9123, 4, 2, 2, 24, 62.47 / 24),
+                new Peak(90.349, 3, 3, 3, 8, 7.65 / 30),
+                new Peak(90.349, 5, 1, 1, 24, 7.65 / 30),
+                new Peak(101.0792, 4, 4, 0, 12, 26.8 / 12),
+                new Peak(107.7157, 5, 3, 1, 48, 8.67 / 48),
+                new Peak(109.9657, 6, 0, 0, 6, 83.43 / 60),
+                new Peak(109.9657, 4, 4, 2, 24, 83.43 / 60),
+                new Peak(119.3921, 6, 2, 0, 24, 45.88 / 24)
+            ];
+        }
+    }
+
+    function Culc(list) {
+        let Sum = 0;
+        let Squsum = 0;
+        let Ave = 0;
+        let Squ = 0;
+        let dataNum = list.length;
+        for (let i = 0; i < list.length; i++) {
+            Sum += list[i];
+        }
+        Ave = Sum / dataNum;
+        for (let i = 0; i < list.length; i++) {
+            Squsum += Math.pow(list[i] - Ave, 2);
+        }
+        Squ = Math.pow(Squsum / dataNum / (dataNum - 1), 0.5);
+        let index = 0;
+        if (Squ == 0) {
+            return "data-error";
+        }
+        if (1 <= Squ && Squ < 10) {
+            return Ave.toFixed(1) + "\\pm" + Squ.toFixed(1);
+        } else if (1 > Squ) {
+            while (!(1 * Math.pow(10, index) <= Squ && Squ < 10 * Math.pow(10, index))) {
+                index -= 1;
+            }
+            return "\\(" + Ave.toFixed(-index + 1) + "\\pm" + Squ.toFixed(-index + 1) + "\\)";
+        } else {
+            while (!(1 * Math.pow(10, index) <= Squ && Squ < 10 * Math.pow(10, index))) {
+                index += 1;
+            }
+            return "\\(" + Ave.toFixed(index + 1) + "\\pm" + Squ.toFixed(index + 1) + "\\)";
+        }
+    }
+
+    function result(tableid, aid, cont) {
+        let head = [["角度 2\\(\\theta\\)/deg", "\\(h\\)", "\\(k\\)", "\\(l\\)", "格子定数 a/nm"]];
+        let ASum = 0;
+        let ASqu = 0;
+        let AList = [];
+        // 各ピークのデータをテーブル用配列に追加
+        for (let i = 0; i < cont.Peaks.length; i++) {
+            const p = cont.Peaks[i];
+            head.push([p.deg, p.h, p.k, p.l, p.calcA().toFixed(7)]);
+            AList.push(p.calcA());
+        }
+        console.log(AList);
+        const AStr = Culc(AList);
+        // テーブルを作成
+        createTable(tableid, head);
+        document.getElementById(aid).innerHTML = AStr;
+    }
+
+    function allser(a, b, c) {
+        let p = 1;
+        if (a !== 0) {
+            p *= 2;
+        }
+        if (b !== 0) {
+            p *= 2;
+        }
+        if (c !== 0) {
+            p *= 2;
+        }
+        if (b !== c) {
+            p *= 2;
+        }
+        return p;
+    }
+
+    function rho(nacl) {
+        let rho = document.getElementById("rhoTable");
+        rho.innerHTML = `<tr><th>xの指数部 \\(k\\)</th><th>積分強度の和</th>`;
+        let rhoList = Array(7).fill(0);
+        let conutList = [];
+        for (let i = 0; i < nacl.Peaks.length; i++) {
+            let pk = nacl.Peaks[i];
+            let rad = (pk.deg / 360) * Math.PI;
+            conutList.push([0, 0, 0, 0, 0, 0, 0]);
+            let [h, k, l] = [pk.h, pk.k, pk.l];
+            conutList[i][h] += allser(h, k, l);
+            rhoList[h] +=
+                Math.pow(
+                    (pk.strange * Math.pow(Math.sin(rad), 2) * Math.cos(rad)) /
+                        (1 + Math.pow(Math.cos(2 * rad), 2) * Math.pow((26.56 / 180) * Math.PI, 2)),
+                    0.5
+                ) * allser(h, k, l);
+            if (h !== k) {
+                conutList[i][k] += allser(k, h, l);
+                rhoList[k] +=
+                    Math.pow(
+                        (pk.strange * Math.pow(Math.sin(rad), 2) * Math.cos(rad)) /
+                            (1 + Math.pow(Math.cos(2 * rad), 2) * Math.pow((26.56 / 180) * Math.PI, 2)),
+                        0.5
+                    ) * allser(k, h, l, rhoList);
+            }
+            if (k !== l) {
+                conutList[i][l] += allser(l, k, h);
+                rhoList[l] +=
+                    Math.pow(
+                        (pk.strange * Math.pow(Math.sin(rad), 2) * Math.cos(rad)) /
+                            (1 + Math.pow(Math.cos(2 * rad), 2) * Math.pow((26.56 / 180) * Math.PI, 2)),
+                        0.5
+                    ) * allser(l, k, h, rhoList);
+            }
+        }
+        return [rhoList, conutList];
+    }
+
+    /*function find(i,j,h,nacl){
+        [i,j,h] = [Math.abs(i),Math.abs(j),Math.abs(h)].sort().reverse();
+        for(let k = 0;k<nacl.Peaks.length;k++){
+            let pk = nacl.Peaks[k];
+            if(pk.h == i && pk.k == j && pk.l == h){
+                return [pk.strange,pk.deg];
+        }
+    }
+        return [-1,-1];
+    }
+        
+    function addlist(h,I,deg,rho,j,hp){
+        let rad = deg/360*Math.PI;
+        rho[Math.abs(h)] += Math.pow(I*Math.pow(Math.sin(rad),2)*Math.cos(rad)/(1+Math.pow(Math.cos(2*rad),2)*Math.pow(26.56/180*Math.PI,2)),0.5);
+        console.log(rho,h,j,hp);
+    }*/
+
+    /*function createchart(rholist) {
+        const ctx = document.getElementById("myChart").getContext("2d");
+        const dataX = [];
+        const dataY = [];
+        for (let i = 0; i < 2000; i++) {
+            dataX.push(i / 1000);
+            let data = 0;
+            for (let j = 0; j < 7; j++) {
+                data += rholist[j] * Math.cos((2 * j * Math.PI * i) / 1000);
+            }
+            dataY.push(data);
+        }
+        new Chart(ctx, {
+            type: "line",
+            data: {
+                labels: dataX, // x軸のラベル
+                datasets: [
+                    {
+                        data: dataY // y軸データ
+                    }
+                ]
+            }
+        });
+    }*/
+
+    function plotgragh(rholist) {
+        let rho = {
+            x: [],
+            y: [],
+            type: "scatter",
+            yaxis: "y",
+            xaxis: "x"
+        };
+        let rho2 = {
+            x: [],
+            y: [],
+            type: "scatter",
+            yaxis: "y2",
+            xaxis: "x2"
+        };
+        const dataX = [];
+        const dataY = [];
+        for (let i = 0; i < 2000; i++) {
+            dataX.push(i / 1000);
+            let data = 0;
+            for (let j = 0; j < 7; j++) {
+                data += rholist[j] * Math.cos((2 * j * Math.PI * i) / 1000);
+            }
+            dataY.push(data);
+        }
+        rho.x = dataX;
+        rho.y = dataY;
+        rho2.x = dataX;
+        rho2.y = dataY;
+        const data = [rho, rho2];
+        Plotly.newPlot("myPlot", data, {
+            //title:"test",
+            showlegend: false,
+            xaxis: { title: "x",
+                    showgrid: false,
+                    ticklen: 10,
+                    ticks: 'inside'
+                   },
+            xaxis2: { overlaying: "x", 
+                     side: "top", 
+                     mirror: true, 
+                     linewidth: 2, 
+                     showgrid: false ,
+                     ticklen: 10,
+                    ticks: 'inside',
+                    showticklabels: false
+                    },
+            yaxis: { title: "密度", 
+                    showgrid: false,
+                    ticklen: 10,
+                    ticks: 'inside'
+                   },
+            yaxis2: { overlaying: "y",
+                     title: "", 
+                     side: "right",
+                     mirror: true, 
+                     linewidth: 2, 
+                     showgrid: false,
+                     ticklen: 10 ,
+                    ticks: 'inside',
+                    showticklabels: false
+                    }
+        });
+    }
+
+    function main() {
+        const ag = new Ag();
+        result("Ag-table", "Ag-a", ag);
+        const nacl = new Nacl();
+        result("NaCl-table", "NaCl-a", nacl);
+        const kcl = new KCl();
+        result("KCl-table", "KCl-a", kcl);
+        const StoMn = new STOmn();
+        result("STOtableall", "STOaall", StoMn);
+        const StoPk = new STOpk();
+        result("STOtabletall", "STOatall", StoPk);
+        const AgSimple = new Agsimple();
+        result("AgSimpleTable", "AgSimpleA", AgSimple);
+        const AgTaisin = new Agtaisin();
+        result("AgTaisinTable", "AgTaisinA", AgTaisin);
+        const NaClSimple = new Naclsimple();
+        result("NaClSimpleTable", "NaClSimpleA", NaClSimple);
+        const NaClTaisin = new Nacltaisin();
+        result("NaClTaisinTable", "NaClTaisinA", NaClTaisin);
+        const KClSimple = new Kclsimple();
+        result("KClSimpleTable", "KClSimpleA", KClSimple);
+        const KClTaisin = new Kcltaisin();
+        result("KClTaisinTable", "KClTaisinA", KClTaisin);
+        const resultTable = document.getElementById("resultA");
+        resultTable.innerHTML += `<tr><td>銀</td><td>${document.getElementById("AgSimpleA").innerHTML}</td><td>${document.getElementById("AgTaisinA").innerHTML}</td><td>${document.getElementById("Ag-a").innerHTML}</td></tr>`;
+        resultTable.innerHTML += `<tr><td>塩化ナトリウム</td><td>${document.getElementById("NaClSimpleA").innerHTML}</td><td>${document.getElementById("NaClTaisinA").innerHTML}</td><td>${document.getElementById("NaCl-a").innerHTML}</td></tr>`;
+        resultTable.innerHTML += `<tr><td>塩化カリウム</td><td>${document.getElementById("KClSimpleA").innerHTML}</td><td>${document.getElementById("KClTaisinA").innerHTML}</td><td>${document.getElementById("KCl-a").innerHTML}</td></tr>`;
+        const ansTable = document.getElementById("ansTable");
+        ansTable.innerHTML = `<tr><th>試料</th><th>格子定数 \\(a\\)/nm</th></tr><tr><td>銀</td><td>${document.getElementById("Ag-a").innerHTML}</td></tr>`;
+        ansTable.innerHTML += `<tr><td>塩化ナトリウム</td><td>${document.getElementById("NaCl-a").innerHTML}</td></tr>`;
+        ansTable.innerHTML += `<tr><td>塩化カリウム</td><td>${document.getElementById("KCl-a").innerHTML}</td></tr>`;
+        const naclind = new NaClInDouble();
+        const [rholist, conutList] = rho(naclind);
+        const rhoTable = document.getElementById("rhoTable");
+        for (let i = 0; i < 7; i++) {
+            rhoTable.innerHTML += `<tr><td>${i}</td><td>${rholist[i]}</td></tr>`;
+        }
+        //createchart(rholist);
+        /*conutList.unshift(["","定数","2","4","6","8","10","12"]);
+        for(let i = 1;i<conutList.length;i++){
+           conutList[i].unshift(i+1); 
+        };
+        createTable("keisuuTable",conutList);
+        console.log(naclind);*/
+        plotgragh(rholist);
+    }
+
+    window.onload = main();
+</script>

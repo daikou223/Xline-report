@@ -1,0 +1,61 @@
+<mxfile host="Electron" modified="2024-09-22T01:42:56.963Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.1.0 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="dXc4R0n6BuNkOPOwcCDm" version="24.1.0" type="device">
+  <diagram name="ページ1" id="ABoztRrzP1RzmYp6wlXY">
+    <mxGraphModel dx="414" dy="306" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="lxWE7sqVPTkG0cFK91qB-10" value="" style="group;rotation=30;fillColor=none;strokeColor=none;" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="253" y="333" width="220" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="lxWE7sqVPTkG0cFK91qB-6" value="" style="pointerEvents=1;verticalLabelPosition=bottom;shadow=0;dashed=0;align=center;html=1;verticalAlign=top;shape=mxgraph.electrical.waveforms.sine_wave;rotation=30;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="lxWE7sqVPTkG0cFK91qB-10">
+          <mxGeometry x="11" y="-41" width="55.46218487394958" height="20.625" as="geometry" />
+        </mxCell>
+        <mxCell id="lxWE7sqVPTkG0cFK91qB-7" value="" style="pointerEvents=1;verticalLabelPosition=bottom;shadow=0;dashed=0;align=center;html=1;verticalAlign=top;shape=mxgraph.electrical.waveforms.sine_wave;rotation=30;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="lxWE7sqVPTkG0cFK91qB-10">
+          <mxGeometry x="58" y="-13" width="55.46218487394958" height="20.625" as="geometry" />
+        </mxCell>
+        <mxCell id="lxWE7sqVPTkG0cFK91qB-8" value="" style="pointerEvents=1;verticalLabelPosition=bottom;shadow=0;dashed=0;align=center;html=1;verticalAlign=top;shape=mxgraph.electrical.waveforms.sine_wave;rotation=30;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="lxWE7sqVPTkG0cFK91qB-10">
+          <mxGeometry x="105" y="15" width="55.46218487394958" height="20.625" as="geometry" />
+        </mxCell>
+        <mxCell id="lxWE7sqVPTkG0cFK91qB-11" value="" style="group;rotation=325;" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="380" y="309" width="220" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="lxWE7sqVPTkG0cFK91qB-12" value="" style="pointerEvents=1;verticalLabelPosition=bottom;shadow=0;dashed=0;align=center;html=1;verticalAlign=top;shape=mxgraph.electrical.waveforms.sine_wave;rotation=-30;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="lxWE7sqVPTkG0cFK91qB-11">
+          <mxGeometry x="11" y="42" width="55.46218487394958" height="20.625" as="geometry" />
+        </mxCell>
+        <mxCell id="lxWE7sqVPTkG0cFK91qB-13" value="" style="pointerEvents=1;verticalLabelPosition=bottom;shadow=0;dashed=0;align=center;html=1;verticalAlign=top;shape=mxgraph.electrical.waveforms.sine_wave;rotation=-30;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="lxWE7sqVPTkG0cFK91qB-11">
+          <mxGeometry x="58" y="17" width="55.46218487394958" height="20.625" as="geometry" />
+        </mxCell>
+        <mxCell id="lxWE7sqVPTkG0cFK91qB-14" value="" style="pointerEvents=1;verticalLabelPosition=bottom;shadow=0;dashed=0;align=center;html=1;verticalAlign=top;shape=mxgraph.electrical.waveforms.sine_wave;rotation=-30;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="lxWE7sqVPTkG0cFK91qB-11">
+          <mxGeometry x="105" y="-8" width="55.46218487394958" height="20.625" as="geometry" />
+        </mxCell>
+        <mxCell id="lxWE7sqVPTkG0cFK91qB-17" value="回折X線" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;rotation=0;" vertex="1" parent="lxWE7sqVPTkG0cFK91qB-11">
+          <mxGeometry x="45" y="-20" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="lxWE7sqVPTkG0cFK91qB-4" value="結晶" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="370" width="90" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="lxWE7sqVPTkG0cFK91qB-15" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;exitX=0.031;exitY=0.415;exitDx=0;exitDy=0;exitPerimeter=0;fillColor=#ffe6cc;strokeColor=#d79b00;opacity=40;" edge="1" parent="1" source="lxWE7sqVPTkG0cFK91qB-6">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="370" y="400" as="sourcePoint" />
+            <mxPoint x="500" y="430" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lxWE7sqVPTkG0cFK91qB-16" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;exitX=0.031;exitY=0.415;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.416;entryY=-0.031;entryDx=0;entryDy=0;entryPerimeter=0;fillColor=#f8cecc;strokeColor=#b85450;opacity=40;" edge="1" parent="1" target="lxWE7sqVPTkG0cFK91qB-4">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="547" y="298" as="sourcePoint" />
+            <mxPoint x="300" y="420" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lxWE7sqVPTkG0cFK91qB-18" value="入射X線" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;rotation=0;" vertex="1" parent="1">
+          <mxGeometry x="320" y="289" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="lxWE7sqVPTkG0cFK91qB-19" value="" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shape=mxgraph.basic.arc;startAngle=0.3;endAngle=0.4124033558189214;rotation=-30;" vertex="1" parent="1">
+          <mxGeometry x="335" y="313" width="100" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="lxWE7sqVPTkG0cFK91qB-20" value="2&lt;i&gt;θ&lt;/i&gt;" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="416" y="347" width="60" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
